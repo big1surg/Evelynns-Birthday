@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="main.css">
+		<div id="intro">
+			<img id="logo" src="carriage.png" width="350" height="225"/>
+			<h1 id="title">Evelynn's 1st Birthday</h1>
+			<div>
+				<ul>
+					<a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=MjQwa2RraTdsYmxvc2ppdnRpdWVqcWFqMjcgZnQ5dWFnaTM0MDkzZzdndGx0MTlhMDg1ZmtAZw&amp;tmsrc=ft9uagi34093g7gtlt19a085fk%40group.calendar.google.com">Add to Calendar</a>	
+					<a href="https://drive.google.com/uc?export=download&id=1wyp-GkRKRg90qF_da6gFv0Vz7pM5IWXL">Download Invite</a>
+					<a href="https://drive.google.com/uc?export=download&id=13Z7v7HnK8TttBn16hctQalM6P-Vg_43-">Download Schedule</a>
+				</ul>	
+			</div>
+		</div> <!--end intro jumbo-->
+	</head> <!--end head-->
+	<body>
+		<div>
+			<h2>Time until the Birthday Celebration:</h2>
+				<div id="clockdiv">
+					<div>
+						<span class="days"></span>
+						<div class="smalltext">Days</div>
+					</div>
+					<div>
+						<span class="hours"></span>
+						<div class="smalltext">Hours</div>
+					</div>
+				    <div>
+						<span class="minutes"></span>
+						<div class="smalltext">Minutes</div>
+					</div>
+					<div>
+						<span class="seconds"></span>
+						<div class="smalltext">Seconds</div>
+					</div>
+				</div>
+		</div>
+		<div>
+			<h2>A beautiful baby girl was born on January 10th, 2017. <br/>We would like to invite you to celebrate this beautiful babies 1st Birthday Celebration on January 6th, 2018. </h2>
+		</div>
+		<div id="intro2">
+			<h1>The Birthday Girl</h1>
+		</div>
+		<div>
+			<img id="evelynn" src="evelynn.jpg" />
+		</div>
+		<div id="intro2">
+			<h1>The Schedule</h1>
+		</div>
+		<div>
+			<img src="wallet_invite.jpg" width="428" height="244"/>
+		</div>
+		<div id="intro2">
+			<h1>The Invitation</h1>
+		</div>
+		<div>
+			<img src="Evelynns Invitation.jpg" width="607" height="1050"/>
+		</div>
+	</body>
+</html>
+
+
+<!-- Display the countdown timer in an element -->
+
+<script>
+// Set the date we're counting down to
+/*var countDownDate = new Date("Jan 6, 2018 14:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+   document.getElementById("countDownDays").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countDown").innerHTML = "EXPIRED";
+  }
+}, 1000);*/
+
+var deadline = 'January 6 2018 14:00:00 GMT+0800';
+	
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+ function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+
+  updateClock();
+  //checkTime(endTime);
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+initializeClock('clockdiv', deadline);
+
+</script>
